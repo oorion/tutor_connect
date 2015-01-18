@@ -13,5 +13,6 @@ class ActiveSupport::TestCase
 
   def teardown
     User.destroy_all
+    Subject.destroy_all
   end
 end
