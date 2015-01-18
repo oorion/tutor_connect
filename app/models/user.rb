@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   has_many :user_subjects
   has_many :subjects, through: :user_subjects
 
+  def update_subjects(new_subjects)
+    subjects.destroy_all
+    new_subjects.split(',').each do |subject|
+      subjects.create(name: subject.strip)
+    end
+  end
 end

@@ -11,11 +11,8 @@ class UsersController < ApplicationController
   def create
     User.create(user_params)
     @user = User.find_by(username: params[:user][:username])
-
     if @user
-      params[:user][:subjects].split(',').each do |subject|
-        @user.subjects.create(name: subject.strip)
-      end
+      @user.update_subjects(params[:user][:subjects])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -30,8 +27,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    old_user = User.find(params[:id])
-    @user = User.update(old_user.id, user_params)
+    @user = User.update(params[:id], user_params)
+    @user.update_subjects(params[:user][:subjects])
     redirect_to user_path(@user)
   end
 

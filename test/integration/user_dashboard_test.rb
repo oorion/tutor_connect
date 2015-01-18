@@ -26,6 +26,7 @@ class UserDashboardTest < ActionDispatch::IntegrationTest
     fill_in 'user[email]', with: 'example4@gmail.com'
     fill_in 'user[zipcode]', with: '99999'
     select 'tutor', :from => 'user[role]'
+    fill_in 'user[subjects]', with: 'rails, sinatra'
     fill_in 'user[availability]', with: 'only mondays'
     click_link_or_button('Update User')
     # lets not forget to also test subjects
@@ -37,6 +38,8 @@ class UserDashboardTest < ActionDispatch::IntegrationTest
     assert_equal 'example4@gmail.com', edited_user.email
     assert_equal '99999', edited_user.zipcode
     assert_equal 'tutor', edited_user.role
+    assert_equal 'rails', edited_user.subjects[0].name
+    assert_equal 'sinatra', edited_user.subjects[1].name
     assert_equal 'only mondays', edited_user.availability
   end
 end
