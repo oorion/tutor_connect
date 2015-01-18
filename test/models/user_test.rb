@@ -1,12 +1,15 @@
-require 'test_helper'
+require_relative '../test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test "user has valid attributes" do
-    user = User.create(username: 'example', password: "foobar12",
-                        first_name:'Brandon', last_name: 'FKJDSF',
-                        email: "Brandon@gmail.com", zipcode: "80227",
-                        role: "teacher",
-                        availability: "All Day Tuesday")
+    user = User.create(username: 'example',
+                       password: "foobar12",
+                       first_name:'Brandon',
+                       last_name: 'FKJDSF',
+                       email: "Brandon@gmail.com",
+                       zipcode: "80227",
+                       role: "teacher",
+                       availability: "All Day Tuesday")
     user.subjects.create(name: "Math")
     user.subjects.create(name: "Science")
     assert_equal 'example', user.username
@@ -22,6 +25,11 @@ class UserTest < ActiveSupport::TestCase
 
   test "user cannot have invalid attributes" do
     user = User.create(username: nil, password: nil)
+    refute user.valid?
+  end
+
+  test "user cannot skip signup" do
+    user = User.create(username: "Rolando", password: "12345678A")
     refute user.valid?
   end
 
