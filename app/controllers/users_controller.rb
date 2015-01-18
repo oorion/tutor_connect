@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
     redirect_to root unless @user
   end
 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
     redirect_to login_path unless @user
   end
 
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
                                  :zipcode,
                                  :email,
                                  :role,
-                                 :availability)
+                                 :availability,
+                                 :school)
   end
 end

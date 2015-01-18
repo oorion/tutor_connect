@@ -9,6 +9,7 @@ class UserTest < ActiveSupport::TestCase
                        email: "Brandon@gmail.com",
                        zipcode: "80227",
                        role: "teacher",
+                       school: "Turing",
                        availability: "All Day Tuesday")
     user.subjects.create(name: "Math")
     user.subjects.create(name: "Science")
@@ -19,6 +20,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Brandon@gmail.com', user.email
     assert_equal '80227', user.zipcode
     assert_equal 'teacher', user.role
+    assert_equal 'Turing', user.school
     assert_equal 'Math', user.subjects.first.name
     assert_equal 'All Day Tuesday', user.availability
   end

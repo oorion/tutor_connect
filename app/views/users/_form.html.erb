@@ -20,10 +20,31 @@
     <%= f.label :zipcode %>
     <%= f.text_field :zipcode %><br>
 
-    <select name="user[role]">
+    <script charset="utf-8">
+      function displaySchoolQuestion() {
+        var tutor = '<label for="user_school">Which school do you attend?</label>' +
+                    '<input type="text" name="user[school]" id="user_school" />';
+        var teacher = '<label for="user_school">At which school do you teach?</label>' +
+                      '<input type="text" name="user[school]" id="user_school" />';
+        var role = document.getElementById('role');
+        if (role.options[role.selectedIndex].value === "tutor") {
+          document.getElementById("school_question").innerHTML = tutor;
+        } else {
+          document.getElementById("school_question").innerHTML = teacher;
+        }
+      }
+    </script>
+
+    <label for="role">Are you a tutor or a teacher?</label>
+    <select name="user[role]" id="role" onchange="displaySchoolQuestion()">
+      <option></option>
       <option>tutor</option>
       <option>teacher</option>
     </select><br>
+
+    <div id="school_question">
+
+    </div>
 
     <% subjects = @user.subjects.map(&:name).join(', ') %>
     <%= f.label :subjects %>
