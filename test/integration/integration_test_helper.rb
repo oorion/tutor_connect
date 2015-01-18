@@ -9,6 +9,7 @@ module IntegrationTestHelper
                         email: "Brandon@gmail.com",
                         zipcode: "80227",
                         role: "teacher",
+                        school: "Turing",
                         availability: "All Day Tuesday")
 
     @user.subjects.create(name: "Math")
