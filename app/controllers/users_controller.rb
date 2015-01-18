@@ -23,7 +23,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    redirect_to login_path unless @user
+    if current_user.id == params[:id].to_i
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def update

@@ -1,6 +1,10 @@
 <div id="banner">
   Welcome <%= @user.username %> | <%= link_to "Logout", logout_path, :method => :delete %>
-  <%= link_to 'Edit Details', edit_user_path(@user) %>
+  <% if current_user.id.to_i == @user.id.to_i %>
+    <%= "current_user.id: #{current_user.id}" %>
+    <%= "@user.id: #{@user.id}" %>
+    <%= link_to 'Edit Details', edit_user_path(@user) %>
+  <% end %>
 </div>
 
 <h2>Personal Information</h2>
@@ -8,7 +12,8 @@
   <strong><%= "#{@user.first_name} #{@user.last_name}" %></strong><br>
   Email: <%= @user.email %><br>
   Zipcode: <%= @user.zipcode %><br>
-  Role: <%= @user.role %>
+  Role: <%= @user.role %><br>
+  Current School: <%= @user.school %>
 </p>
 
 <h2>Subjects</h2>
