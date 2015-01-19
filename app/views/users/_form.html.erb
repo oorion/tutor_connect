@@ -1,60 +1,65 @@
-<%= form_for @user do |f| %>
-  <div id="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %><br>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-4">
+        <div class="form">
+        <%= form_for @user do |f| %>
+          <%= f.label :username %>
+          <%= f.text_field :username %><br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %><br>
+          <%= f.label :password %>
+          <%= f.password_field :password %><br>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %><br>
 
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %><br>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %><br>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %><br>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %><br>
 
-    <%= f.label :email %>
-    <%= f.email_field :email %><br>
+          <%= f.label :email %>
+          <%= f.email_field :email %><br>
 
-    <%= f.label :zipcode %>
-    <%= f.text_field :zipcode %><br>
+          <%= f.label :zipcode %>
+          <%= f.text_field :zipcode %><br>
 
-    <script charset="utf-8">
-      function displaySchoolQuestion() {
-        var tutor = '<label for="user_school">Which school do you attend?</label>' +
-                    '<input type="text" name="user[school]" id="user_school" />';
-        var teacher = '<label for="user_school">At which school do you teach?</label>' +
-                      '<input type="text" name="user[school]" id="user_school" />';
-        var role = document.getElementById('role');
-        if (role.options[role.selectedIndex].value === "tutor") {
-          document.getElementById("school_question").innerHTML = tutor;
-        } else {
-          document.getElementById("school_question").innerHTML = teacher;
-        }
-      }
-    </script>
+          <script charset="utf-8">
+            function displaySchoolQuestion() {
+              var tutor = '<label for="user_school">Which school do you attend?</label>' +
+                          '<input type="text" name="user[school]" id="user_school" />';
+              var teacher = '<label for="user_school">At which school do you teach?</label>' +
+                            '<input type="text" name="user[school]" id="user_school" />';
+              var role = document.getElementById('role');
+              if (role.options[role.selectedIndex].value === "tutor") {
+                document.getElementById("school_question").innerHTML = tutor;
+              } else {
+                document.getElementById("school_question").innerHTML = teacher;
+              }
+            }
+          </script>
 
-    <label for="role">Are you a tutor or a teacher?</label>
-    <select name="user[role]" id="role" onchange="displaySchoolQuestion()">
-      <option></option>
-      <option>tutor</option>
-      <option>teacher</option>
-    </select><br>
+          <label for="role">Are you a tutor or a teacher?</label>
+          <select name="user[role]" id="role" onchange="displaySchoolQuestion()">
+            <option></option>
+            <option>tutor</option>
+            <option>teacher</option>
+          </select><br>
 
-    <div id="school_question">
+          <div id="school_question">
 
+          </div>
+
+          <% subjects = @user.subjects.map(&:name).join(', ') %>
+          <%= f.label :subjects %>
+          <%= f.text_field :subjects, value: subjects %><br>
+
+          <%= f.label :availability %>
+          <%= f.text_area :availability %><br>
+          <%= f.submit %>
+        <% end %>
+        </div>
+      </div>
     </div>
-
-    <% subjects = @user.subjects.map(&:name).join(', ') %>
-    <%= f.label :subjects %>
-    <%= f.text_field :subjects, value: subjects %><br>
-
-    <%= f.label :availability %>
-    <%= f.text_area :availability %><br>
   </div>
-
-  <div id="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
