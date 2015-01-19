@@ -1,12 +1,15 @@
-<%= form_for :session, url: login_path do |f| %>
-  <div id="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %><br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
+<div class="row">
 
-  <div id="actions">
-    <%= f.submit 'Login' %>
-  </div>
-<% end %>
+  <%= form_for :session, url: login_path do |f| %>
+    <div id="field">
+      <%= f.label :username %><br>
+      <%= f.text_field :username %><br>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div><br>
+
+    <div id="actions">
+      <%= f.submit 'Login' %>
+    </div>
+  <% end %>
+</div>
