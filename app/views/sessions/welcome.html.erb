@@ -1,8 +1,13 @@
-<h1>Welcome to Tutor Connection</h1>
+<h1>TutorConnection</h1>
+<h2>Connecting Students with Tutors</h2>
+<hr>
+
 <div id="login">
   <%= link_to "Login", login_path %> |
   <%= link_to "Signup", new_user_path %>
 </div>
 <div id="description">
-
+  Teachers are concerned about their students and want to provide them with as many resources as possible. TutorConnection provides a way for classroom teachers to match their students with high school tutors. This gives students an extra opportunity master challenging content.
 </div>
+
+<%= render "map" %>

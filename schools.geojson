@@ -1,0 +1,46 @@
+var schoolData = {
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2015-01-15T01:17:02Z",
+  "features":
+  [
+    {
+      "type": "Feature",
+      "id": "node/25765941",
+      "properties":
+      {
+        "@id": "node/25765941",
+        "amenity": "elementaryschool",
+        "name": "Ebert Elementary School"
+      },
+      "geometry":
+      {
+        "type": "Point",
+        "coordinates":
+        [
+          39.761152, -104.994958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1087811656",
+      "properties":
+      {
+        "@id": "node/1087811656",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Boulder Cafe"
+      },
+      "geometry":
+      {
+        "type": "Point",
+        "coordinates":
+        [
+          40.0182543, -105.2789389
+        ]
+      }
+    }
+  ]
+  };
